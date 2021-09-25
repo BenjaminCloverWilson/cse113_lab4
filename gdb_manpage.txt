@@ -1,0 +1,179 @@
+file [file_name]
+    DESCRIPTION -- Saddles up an executable file to be debugged. It will be
+        used by the run command, read for its symbols, or for getting the
+        contents of memory regarding the file. If the file is not
+        executable or lacks symbols the file will not be loaded.
+    ALIASES -- gdb [file_name] OR (gdb) file [file_name]
+
+backtrace [arguments]
+    DESCRIPTION -- Prints out current stack frames and information of a program
+        at the time the command is inputted. If the stack is empty for the
+        program at the time of the command, 'no stack' will be returned. If the
+        stack has stack frames at the time backtrace is used, then stack frames
+        are labeled #n, where the top of the stack has n = 0, the second n = 1,
+        and so on. So, #1 called the function represented as stack frame #0, #2
+        called the function represented as #1, and so on.
+    ALIASES -- bt [arguments]
+    ARGUMENTS --
+        full -- Prints values of local variables in a stack frame at the point of
+            the program when backtrace is inputted.
+
+run [arguments]
+    DESCRIPTION -- Literally runs and debugs the program. The path
+        of the file will be printed along with the arguments last provided.
+        Any debugging information or output of the program is printed.
+        Once the program is finished running and being debugged, the
+        program is terminated.
+    ALIASES -- r [arguments]
+
+list [arguments]
+    DESCRIPTION -- Allows for the viewing of a program's source code.
+        No arguments results in 10 lines of the source code being printed,
+        subsequent usages of list start with the line of code directly
+        after the last line printed. The line number of the code is directly
+        left of the code printed. With the first time list is used with no
+        arguments, 10 lines of code centered around main() will be outputted.
+        List can be used without arguments until the number of lines is
+        'out of range' of the source code of the saddled executable file.
+    ALIASES -- l [arguments]
+    ARGUMENTS -- 
+        n, -- Prints list starting at line number specified (n)
+        ,n -- Prints list ending at line number specified (n)
+        n,m -- Prints list between two numbers (n and m)
+        function_name -- Prints out source code in function specified
+
+help [command]
+    DESCRIPTION -- Provides man pages of gdb commands. If left blank
+        classes of commands are printed that lead to further man pages.
+        Specifying a command directly prints out the first man page of
+        said command.
+    ALIASES -- h [command]
+
+break [argument]
+    DESCRIPTION -- Places breakpoint at the line number specified.
+        When a program with a breakpoint is run, everything up to the line
+        number of the breakpoint specified is executed and the program is
+        paused. Other commands can be run at this point, such as backtrace.
+    ALIASES -- b [argument]
+    ARGUMENTS --
+        line_number -- Places a breakpoint at a specific line number.
+        function_name -- Places a breakpoint at the line number of the specific
+            function.
+
+continue
+    DESCRIPTION -- Unpauses a program.
+    ALIASES -- c
+
+step [number]
+    DESCRIPTION -- Step executes one line of code and then pauses the program again
+        if no specific number is supplied. Other commands can be run at this
+        point. If a number is specified, then n number of lines is run before
+        the program is paused again; other commands can be run at this point.
+        Prints the next line of code to be run once unpaused.
+    ALIASES -- s
+
+bt full
+    DESCRIPTION -- Refer to backtrace full for a description of what this
+        command and argument do.
+    ALIASES -- backtrace
+
+print [variable_name]
+    DESCRIPTION -- Prints out the value a variable specified. Works for basic
+        data types, arrays, strcutures, and unions. Every time a variable is
+        printed, the printed value is logged as $n, where n represents its
+        log number. The first variable printed is $1. Program needs to be
+        running and the variables in question must be present in the function
+        the program is currently running/paused in. Different stack frames
+        print out different values (even addresses) in different contexts.
+    ALIASES -- p [variable_name]
+    VARIATIONS --
+        ptype [variable_name]
+            DESCRIPTION -- Prints out the type of the variable specified. Works
+                for basic data types, arrays, strcutures, and unions. Program
+                needs to be running and the variables in question must be
+                present in the function the program is currently running/paused
+                in.
+            ALIASES -- pt [variable_name]
+        print &[variable_number]
+            DESCRIPTION -- Prints out the address of a variable. If the
+                variable is a pointer, the address of the pointer is printed.
+            ALIASES -- p &[variable_name
+        print *[variable_number]
+            DESCRIPTION -- Prints out what the pointer itself points to.
+            ALIASES -- p *[variable_name]
+        print/x [variable_number]
+            DESCRIPTION -- Prints out the hexidecimal conversion of the value
+                of the variable.
+            ALIASES -- p/x [variable_name]
+        print [variable_name = n]
+            DESCRIPTION -- Sets the variable to a specified number (n) for
+                debugging and prints it out.
+            ALIASES -- p [variable_name = n]
+
+frame [number]
+    DESCRIPTION -- With no number, frame just prints the current frame and line
+        of source code the program is paused on. Specifying a number will move
+        the context of the program and commands to that of the corresponding
+        stack frame. Using backtrace provides the identity of the frames and
+        the called functions that those frames represent.
+    ALIASES -- f [number]
+
+kill
+    DESCRIPTION -- Terminates the current debugging run of the executable file.
+        After a confirmation, the debugging session is terminated but the
+        breakpoints are maintained for the next run.
+    ALIASES -- k
+
+next
+    DESCRIPTION -- Executes the next line of code and pauses the program. If
+        the line of code calls a function, the program runs the entire function
+        then pauses the program before running the next line of code after the
+        function call. Prints out the next line of code to be executed.
+    ALIASES -- n
+
+info [argument]
+    DESCRIPTION -- Prints out generic information about the program being
+        debugged.
+    ALIASES -- i [arguement]
+    ARGUMENTS -- 
+        breakpoints -- Prints out a complete list of all breakpoints placed
+            within a file's debugging session. Keeps track of breakpoint
+            identity, type, disp, whether it's enabled, its address, and
+            where it is in the source code when the file is run. Can be
+            written as 'info b' or 'i b' for short.
+
+enable/disable [number]
+    DESCRIPTION -- Enables or disables a breakpoint with its identity being
+        the number specified. Disabled breakpoints are simply skipped over
+        by a run command. Not Specifying a number results in all breakpoints
+        being enabled or disabled.
+
+delete [number]
+    DESCRIPTION -- Deletes a breakpoint with its identity being the number
+        specified. If no number is specified, all breakpoints are deleted.
+    ALIASES -- d [number]
+
+watch [variable_name]
+    DESCRIPTION -- Sets up a watchpoint for the variable mentioned. The
+        execution of the block of code that contains this variable will
+        pause whenever the value of this variable changes. When the block
+        code that contains the watched variable terminates (its scope ends),
+        the watchpoint is deleted; the watchpoint is not printed in new runs
+        of a file. The watchpoints are logged starting at 4. Whenever the
+        programm is paused by the watchpoint, the old and new values of the
+        variable are printed.
+    
+break [argument] [condition]
+    DESCRIPTION -- Places conditional breakpoint at the line number specified.
+        When a program with a breakpoint is run, everything up to the line
+        number of the breakpoint specified is executed and the program is
+        paused. Other commands can be run at this point, such as backtrace.
+        Conditional breakpoints only pause a program if a condition is met.
+    ALIASES -- b [argument] [condition]
+    ARGUMENTS --
+        line_number -- Places a breakpoint at a specific line number.
+        function_name -- Places a breakpoint at the line number of the specific
+            function.
+    EXAMPLE -- b 16 if i >= len
+        Will only pause a debuggin run of the program if the variable i >= len
+        at line 16.
