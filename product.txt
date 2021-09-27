@@ -1,0 +1,112 @@
+Breakpoint 1, product (a=32767, b=-8345) at product.c:6
+6	{
+(gdb) bt
+#0  product (a=32767, b=-8345) at product.c:6
+#1  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=32767, b=-8345) at product.c:6
+#1  0x00005555555551da in main () at product.c:28
+
+
+Breakpoint 1, product (a=0, b=0) at product.c:6
+6	{
+(gdb) bt
+#0  product (a=0, b=0) at product.c:6
+#1  0x00005555555551a0 in product (a=5, b=10) at product.c:20
+#2  0x00005555555551da in main () at product.c:28
+
+
+Breakpoint 1, product (a=0, b=0) at product.c:6
+6	{
+(gdb) bt
+#0  product (a=0, b=0) at product.c:6
+#1  0x00005555555551a0 in product (a=5, b=7) at product.c:20
+#2  0x00005555555551a0 in product (a=5, b=10) at product.c:20
+#3  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=5, b=6) at product.c:23
+#1  0x00005555555551a0 in product (a=5, b=7) at product.c:20
+#2  0x00005555555551a0 in product (a=5, b=10) at product.c:20
+#3  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=5, b=6) at product.c:6
+#1  0x00005555555551b1 in product (a=5, b=7) at product.c:20
+#2  0x00005555555551a0 in product (a=5, b=10) at product.c:20
+#3  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=5, b=7) at product.c:20
+#1  0x00005555555551a0 in product (a=5, b=10) at product.c:20
+#2  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=5, b=7) at product.c:6
+#1  0x00005555555551b1 in product (a=5, b=10) at product.c:20
+#2  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=6, b=7) at product.c:6
+#1  0x00005555555551a0 in product (a=7, b=10) at product.c:20
+#2  0x00005555555551b1 in product (a=5, b=10) at product.c:20
+#3  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=7, b=8) at product.c:6
+#1  0x00005555555551b1 in product (a=7, b=10) at product.c:20
+#2  0x00005555555551b1 in product (a=5, b=10) at product.c:20
+#3  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=0, b=0) at product.c:6
+#1  0x00005555555551a0 in product (a=8, b=10) at product.c:20
+#2  0x00005555555551b1 in product (a=7, b=10) at product.c:20
+#3  0x00005555555551b1 in product (a=5, b=10) at product.c:20
+#4  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=8, b=9) at product.c:6
+#1  0x00005555555551b1 in product (a=8, b=10) at product.c:20
+#2  0x00005555555551b1 in product (a=7, b=10) at product.c:20
+#3  0x00005555555551b1 in product (a=5, b=10) at product.c:20
+#4  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=8, b=10) at product.c:20
+#1  0x00005555555551b1 in product (a=7, b=10) at product.c:20
+#2  0x00005555555551b1 in product (a=5, b=10) at product.c:20
+#3  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=7, b=10) at product.c:20
+#1  0x00005555555551b1 in product (a=5, b=10) at product.c:20
+#2  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  product (a=5, b=10) at product.c:20
+#1  0x00005555555551da in main () at product.c:28
+
+
+(gdb) bt
+#0  main () at product.c:29
+
+
+(gdb) c
+Continuing.
+product is 151200
+[Inferior 1 (process 17176) exited normally]
+(gdb) quit

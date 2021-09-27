@@ -1,0 +1,287 @@
+1) Values at Print Statements
+    Expectations)
+        First Statement:
+            x = 2
+            y = 1
+            z = 1
+    
+        Second Statement:
+            x = 2
+            y = 2
+            z = 1
+
+        Third Statement:
+            x = 2
+            y = 2
+            z = 2
+
+        Fourth Statement:
+            x = 0
+            y = 0
+            z = -1
+
+        Fifth Statement:
+            x = 0
+            y = -1
+            z = -1
+    
+        Sixth Statement:
+            x = 0
+            y = 0
+            z = 0
+    Why)
+        I expected these outcomes due to the short circuiting. After every
+        print statement x, y, and z are reset to either 1 or -1. So, the compound
+        statements result in x, y, and z equaling numbers only between -1 and 2.
+        Short circuiting means that after an || condition, any statement afterwards
+        would not be carried out. Thus, any compound statement before || resulted
+        in a +1. If there were only && conditions, all variables would be +1.
+    
+    Right or Wrong)
+        I was half right. Short circuiting meant that after an || condition,
+        any statement afterwards would not be carried out. Thus, any compound
+        statement before || resulted in a +1. If there were only && conditions,
+        all variables would be +1. At least for the first 3 print statements.
+        However, when setting them all to -1, the compound operators return
+        a value of 0 whenever +1 is made, which means 'false' reversing the
+        meaning of the || and && operators in the short circuit. Now, when x
+        became 0 it resulted in the opposite outcomes of what I expected for
+        y and z.
+    
+    Correct Answer)
+        First Statement:
+            x = 2
+            y = 1
+            z = 1
+    
+        Second Statement:
+            x = 2
+            y = 2
+            z = 1
+
+        Third Statement:
+            x = 2
+            y = 2
+            z = 2
+
+        Fourth Statement:
+            x = 0
+            y = -1
+            z = 0
+
+        Fifth Statement:
+            x = 0
+            y = 0
+            z = -1
+    
+        Sixth Statement:
+            x = 0
+            y = -1
+            z = -1
+
+
+2) Error in the Code
+    Expectation/Answer)
+        On line 13: void OS_HP-UX_print()
+    
+    Why)
+        This function is improperly named. There is a dash. And, the function
+        is also not the correct color in the provided source code, indicating
+        that it is not being interpreted as a function.
+    
+    Right or Wrong)
+        This is correct as the dash serves as binary operator. Thus, it can
+        not serve as a part of a name in the source code. So, the function name
+        is being interpreted as a (quite whack) statement.
+
+
+3) Expected output
+    Expectation/Answer)
+        Assuming that there is a #include <stdio.h> for printf(),
+        I expect the output to just be '1'
+    
+    Why)
+        This is a do-while loop. The variable i, starts as 1, and the do block
+        of the loop is completed at least once with its print statment. Then an
+        if statement asks it to continue as long as i < 15, which is true at
+        the end of the do block. However, the while condition is 'false.' So,
+        i is no longer printed or subsequently added. Thus, I expected only the
+        value of 1 to be printed.
+    
+    Right or Wrong)
+        This is correct as when I wrote the program in VS code, the output was
+        indeed one.
+
+
+4) Expected output of a floating point interpretation
+    Expectation/Answer)
+        The output would be 'f is NOT 1.0'
+    
+    Why)
+        First of all, there are 2 options and the puzzle literally says to think
+        again about saying the other print option. So, that kind of gives away the
+        answer. But, I also know that decimals in base 10 are not the same in
+        binary floating point form interpreted by the computer (for the most part).
+        So, while it's very close, the floating point (0.1f) is not exactly 0.1.
+
+    Right or Wrong)
+        Thus, the result is not exactly 1.0f, and the condition is not met,
+        resulting in 'f is NOT 1.0' being printed out, because it's not 1.0.
+        So, I am correct.
+
+
+5) Mistake
+    Expectation/Asnwer)
+        On line 5, there are 2 values for a standard int variable.
+        int a = 1,2;
+
+    Why)
+        You can't store multiple values at one storage address. And,
+        a is not an array and doesn't utilize pointers to have multiple
+        values under one variable name.
+
+    Right or Wrong)
+        I am correct for the reason mentioned above.
+
+
+6) sizeof(arr) output
+    Expectation/Answer)
+        I expected it to print "size of array is: 40," which is the
+        correct answer.
+    
+    Why)
+        SIZE is defined as equaling 10. So, the array
+        arr[] stores 10 values. However, size() measures how many bits
+        are stored for arr[] and prints it out without adjusting for data
+        type. And, since arr[] stores int data, it multiples the number
+        of values it stores by 4 bits. Thus, the output would be 40.
+    
+    Right or Wrong)
+        This is correct for the reasons mentioned in why. I also
+        compiled the code after making my prediction and it was
+        indeed 40.
+
+
+7) Scanf Differences
+    Expectations/Answer)
+        The difference between the scanf() calls is that there is a space
+        before storing the input into char c. If that space is removed,
+        then it stores the ENTER key as input in char c for the second
+        call and print out.
+    
+    Why)
+        Essentially, the puzzle prompt pointed out the difference. It's just a
+        space. However, since the ENTER key is input, the second scanf() call
+        attempts to store it into char c. Placing that space kind of eats up
+        the inputted ENTER. So, that way the second char can be stored properly
+        by the second scanf().
+
+    Right or Wrong)
+        This is correct for the reasons mentioned in why. Another way to
+        collect char inputs is 'while(tmp = getchar() != '\n') c = tmp;'
+        But, let's be honest, that space is so much easier to remember
+        and implement.
+
+8) Output with compound statements
+    Expectations)
+        10
+        4
+        11
+    
+    Why)
+        prints the initial value of i, which was 10. Then it prints out how
+        much memory is stored under i, which is 4 bits as it's an int data
+        type. Then, with the post-fix i++ statement, it adds 1 to i after
+        expressing the rest of line 7. So, line 8 prints the new value i,
+        after i++, which is 11.
+    
+    Right or Wrong)
+        My expectation was slightly incorrect as it prints out 10 4 10.
+        This is because the i++ is not a statement, but rather an input
+        for the call to sizeof(). So, i is still 10 at the end of the
+        call and printf().
+
+
+9) Date
+    Expectations/Answer)
+        It originaly prints 2-2-2002 as there is not any zero-padding
+        specified in the printf() call and it seeks to print the minimum
+        number of digits that must appear (as specified in man 3 printf())
+        under conversion specifiers. So, the %d applies that form of
+        conversion where 02 can be converted and printed  as just 2, while
+        conveying the minimum amount of information needed. The code can be
+        fixed on line 8: "printf("%02d-%02d-%02d", day, month, year);"
+    
+    Why)
+        This fix simply tells printf() to complete zero padding with a field
+        width of 2. This adds a zero to the tens place if a number does not
+        take that slot. This information is according to man 3 printf().
+    
+    Right or Wrong)
+        This is correct. I even compiled a similar program to test it out.
+        The reasons why this is correct is in why.
+
+
+10) Infinite Loop
+    Expectations/Answer)
+        On line 6: "for( i = 0; -i < n; i--);"
+    
+    Why)
+        Only one character could/needed to be added to fix the infinite printing
+        of '-' characters. Simply adding a negative sign before the i in the
+        conditional part of the for loop fixes the loop. This is because i 
+        already starts at 0 and only gets smaller (more negative). So, 
+        simply turning that frown upside down (haha), -1 is compared to n as
+        just 1 when checking the condition of the for loop, and so on as the
+        value of i is changed.
+    
+    Right or Wrong)
+        This is correct. The reason why it's correct is under why. I compiled it
+        just to be sure.
+
+
+11) Output of cnt in a do-while
+    Expectations)
+        This program would fail to produce an output as a is eventually divided
+        by 0, which is impossible. There is also not an exit to the while loop,
+        it kind of just says to repeat while cnt exists then subtract it by 1
+        with every run.
+    
+    Why)
+        Even if there was an exit here, cnt becomes procedurally smaller and
+        starts at a value larger than 0, meaning that cnt eventually becomes
+        zero in this infinite while loop. As a result a is eventually divided
+        by zero, which is impossible. So, between the infinite loop with
+        the printf() outside this loop, and the impossible division by zero,
+        I expected the output to literally be nothing as nothing could be printed
+        before a was finished calculating (if it could be calculated at all).
+    
+    Right or Wrong)
+        This was kind of correct. I predicted that nothing would be printed
+        for the value of a. However, something is printed in this program:
+        "Floating point exception (core dumped)." This is because a is
+        eventually divided by zero, which the computer can't do.
+
+
+12) Output of i and Short Circuiting
+    Expectations/Answer)
+        It should print out: '8'
+
+    Why)
+        I expected this answer because the value is calculated with
+        short circuiting and compound statements. It follows a
+        sort of "Order of Operations." The compiler first reads ++i and makes
+        i = 6 become 7. Then it compares i with 7 to see if it is less than 7.
+        Since 7 is not less than 7, it returns a false value. As a result,
+        the compiler doesn't even read the information following && because
+        the answer is already known to be false because i is not less than 7.
+        So, i is never divided by 6 and added by 1. However, there is still
+        an || statement to check even though the first half is false. Again,
+        ++i adds 1 to i making i = 7 become 8 before any conditions are checked.
+        Finally, i is compared to 9, and it is indeed <= 9. Meaning the if
+        statement is true. But, nothing is in the block for the if-statement,
+        so that doesn't matter really. Finally, the value of i is printed,
+        which is '8.'
+    
+    Right or Wrong)
+        This is correct for the reasons mentioned under why.
